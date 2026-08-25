@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       e.preventDefault();
       const targetEntity = btn.getAttribute('data-entity') || 'General Quote';
+      const isEPRPage = window.location.pathname.includes('epr-registration') || targetEntity.toLowerCase().includes('epr') || targetEntity.toLowerCase().includes('waste') || targetEntity.toLowerCase().includes('plastic') || targetEntity.toLowerCase().includes('battery') || targetEntity.toLowerCase().includes('tyre') || targetEntity.toLowerCase().includes('oil');
       
+      let targetPage = isEPRPage ? 'epr-contact.html' : 'contact.html';
       let serviceParam = '';
       if (targetEntity.includes('Liaison')) {
         serviceParam = '?service=Liaison+Office';
@@ -43,9 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceParam = '?service=Wholly+Owned+Subsidiary';
       } else if (targetEntity.includes('Branch')) {
         serviceParam = '?service=Branch+Office';
+      } else if (targetEntity.includes('Plastic')) {
+        serviceParam = '?service=Plastic+Packaging';
+      } else if (targetEntity.includes('E-Waste')) {
+        serviceParam = '?service=E-Waste';
+      } else if (targetEntity.includes('Battery')) {
+        serviceParam = '?service=Battery';
+      } else if (targetEntity.includes('Tyre')) {
+        serviceParam = '?service=Waste+Tyre';
+      } else if (targetEntity.includes('Oil')) {
+        serviceParam = '?service=Used+Oil';
       }
 
-      window.location.href = 'contact.html' + serviceParam;
+      window.location.href = targetPage + serviceParam;
     });
   });
 
