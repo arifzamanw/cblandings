@@ -238,16 +238,20 @@ document.addEventListener('DOMContentLoaded', () => {
     heroLeadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      const eprCategoryEl = document.getElementById('heroEntityType') || document.getElementById('eprCategory');
+      const eprProductEl = document.getElementById('heroProductActivity') || document.getElementById('eprProductActivity');
+
       const payload = {
-        fullName: document.getElementById('heroFullName').value.trim(),
-        email: document.getElementById('heroEmail').value.trim(),
-        countryCode: document.getElementById('heroCountryCode') ? document.getElementById('heroCountryCode').value : '+91',
-        phone: document.getElementById('heroPhone').value.trim(),
-        entityType: document.getElementById('heroEntityType').value,
+        fullName: (document.getElementById('heroFullName') || document.getElementById('eprFullName')).value.trim(),
+        email: (document.getElementById('heroEmail') || document.getElementById('eprEmail')).value.trim(),
+        countryCode: (document.getElementById('heroCountryCode') || document.getElementById('eprCountryCode')) ? (document.getElementById('heroCountryCode') || document.getElementById('eprCountryCode')).value : '+91',
+        phone: (document.getElementById('heroPhone') || document.getElementById('eprPhone')).value.trim(),
+        entityType: eprCategoryEl ? eprCategoryEl.value : 'EPR Consultation',
+        message: eprProductEl ? eprProductEl.value.trim() : '',
         source: 'Hero Contact Form'
       };
 
-      await handleLeadSubmission(payload, heroSubmitBtn, heroFormStatus, () => {
+      await handleLeadSubmission(payload, heroSubmitBtn || document.getElementById('eprSubmitBtn'), heroFormStatus || document.getElementById('eprFormStatus'), () => {
         heroLeadForm.reset();
       });
     });
@@ -258,13 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
     leadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      const productEl = document.getElementById('productActivity') || document.getElementById('eprProductActivity');
+      const companyEl = document.getElementById('company');
+
       const payload = {
         fullName: document.getElementById('fullName').value.trim(),
         email: document.getElementById('email').value.trim(),
         countryCode: document.getElementById('countryCode') ? document.getElementById('countryCode').value : '+91',
         phone: document.getElementById('phone').value.trim(),
-        company: document.getElementById('company') ? document.getElementById('company').value.trim() : '',
+        company: companyEl ? companyEl.value.trim() : '',
         entityType: entityTypeSelect ? entityTypeSelect.value : 'General Consultation',
+        message: productEl ? productEl.value.trim() : '',
         source: 'Main Consultation Form'
       };
 
@@ -284,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const modalEmail = document.getElementById('modalEmail') ? document.getElementById('modalEmail').value.trim() : '';
       const modalPhone = document.getElementById('modalPhone') ? document.getElementById('modalPhone').value.trim() : '';
       const modalCountryCode = document.getElementById('modalCountryCode') ? document.getElementById('modalCountryCode').value : '+91';
+      const modalProductEl = document.getElementById('modalProductActivity');
 
       let modalStatus = leadFormModal.querySelector('.modal-form-status');
       if (!modalStatus) {
@@ -298,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         countryCode: modalCountryCode,
         phone: modalPhone,
         entityType: 'Popup Modal Consultation',
+        message: modalProductEl ? modalProductEl.value.trim() : '',
         source: 'Popup Modal Form'
       };
 
