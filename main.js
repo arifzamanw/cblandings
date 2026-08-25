@@ -35,12 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       e.preventDefault();
       const targetEntity = btn.getAttribute('data-entity') || 'General Quote';
+      const isBISPage = window.location.pathname.includes('bis') || targetEntity.toLowerCase().includes('bis') || targetEntity.toLowerCase().includes('isi') || targetEntity.toLowerCase().includes('crs') || targetEntity.toLowerCase().includes('fmcs') || targetEntity.toLowerCase().includes('standard');
       const isCompanyPage = window.location.pathname.includes('company-registration') || targetEntity.toLowerCase().includes('company') || targetEntity.toLowerCase().includes('private limited') || targetEntity.toLowerCase().includes('opc') || targetEntity.toLowerCase().includes('llp') || targetEntity.toLowerCase().includes('section 8') || targetEntity.toLowerCase().includes('mca') || targetEntity.toLowerCase().includes('incorporation');
       const isLMPCPage = window.location.pathname.includes('lmpc') || targetEntity.toLowerCase().includes('lmpc') || targetEntity.toLowerCase().includes('metrology') || targetEntity.toLowerCase().includes('packaged');
       const isEPRPage = window.location.pathname.includes('epr') || targetEntity.toLowerCase().includes('epr') || targetEntity.toLowerCase().includes('waste') || targetEntity.toLowerCase().includes('plastic') || targetEntity.toLowerCase().includes('battery') || targetEntity.toLowerCase().includes('tyre') || targetEntity.toLowerCase().includes('oil');
       
       let targetPage = 'contact.html';
-      if (isCompanyPage) {
+      if (isBISPage) {
+        targetPage = 'bis-contact.html';
+      } else if (isCompanyPage) {
         targetPage = 'company-contact.html';
       } else if (isLMPCPage) {
         targetPage = 'lmpc-contact.html';
@@ -276,9 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const eprProductEl = document.getElementById('heroProductActivity') || document.getElementById('eprProductActivity');
       const heroIsImportingEl = document.getElementById('heroIsImporting');
       const heroFoundersEl = document.getElementById('heroFounders');
+      const heroCountryOfOriginEl = document.getElementById('heroCountryOfOrigin');
 
       let messageVal = eprProductEl ? eprProductEl.value.trim() : '';
-      if (heroFoundersEl) {
+      if (heroCountryOfOriginEl) {
+        messageVal = `Country of Origin: ${heroCountryOfOriginEl.value}${messageVal ? ' | Product: ' + messageVal : ''}`;
+      } else if (heroFoundersEl) {
         messageVal = `Founders: ${heroFoundersEl.value}${messageVal ? ' | Activity: ' + messageVal : ''}`;
       } else if (heroIsImportingEl) {
         messageVal = `Importing to India: ${heroIsImportingEl.value}${messageVal ? ' | Product: ' + messageVal : ''}`;
@@ -309,9 +315,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const companyEl = document.getElementById('company');
       const isImportingEl = document.getElementById('isImporting');
       const foundersEl = document.getElementById('founders');
+      const countryOfOriginEl = document.getElementById('countryOfOrigin');
 
       let messageVal = productEl ? productEl.value.trim() : '';
-      if (foundersEl) {
+      if (countryOfOriginEl) {
+        messageVal = `Country of Manufacture: ${countryOfOriginEl.value}${messageVal ? ' | Details: ' + messageVal : ''}`;
+      } else if (foundersEl) {
         messageVal = `Founders: ${foundersEl.value}${messageVal ? ' | Details: ' + messageVal : ''}`;
       } else if (isImportingEl) {
         messageVal = `Importing to India: ${isImportingEl.value}${messageVal ? ' | Details: ' + messageVal : ''}`;
