@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitemap | CertificationsBay All Pages & Services Index</title>
+  <meta name="description" content="Complete sitemap and directory of all landing pages, contact desks, and legal notices for CertificationsBay compliance advisory services.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="CB%20Favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#F8FAF9] text-black">
+
+  <div class="flex flex-col bg-[#F8FAF9] w-full min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="w-full bg-white border-b border-gray-100 py-4 sticky top-0 z-40 shadow-sm">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="Certificationsbay Logo.svg" alt="CertificationsBay Logo" class="h-8 w-auto filter brightness-0">
+          <span class="hidden md:inline-block bg-[#EAF5EF] text-[#52B49C] text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-[#D8ECE0] uppercase tracking-wider">
+            CertificationsBay · Private Consultancy
+          </span>
+        </a>
+
+        <div class="flex items-center gap-4 text-xs font-semibold text-gray-700">
+          <a href="index.html" class="hover:text-black transition-colors">Home</a>
+          <a href="company-registration.html" class="hidden sm:inline-block hover:text-black transition-colors">Company Registration</a>
+          <a href="lmpc-registration.html" class="hidden sm:inline-block hover:text-black transition-colors">LMPC</a>
+          <a href="sitemap.html" class="font-bold text-[#52B49C] border-b-2 border-[#52B49C] pb-0.5">Sitemap</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full flex-1 py-10 sm:py-16">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Page Title & Search Bar -->
+        <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm mb-10 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-6">
+            <div>
+              <div class="inline-flex items-center gap-2 bg-[#EAF5EF] text-[#52B49C] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                <span class="w-2 h-2 rounded-full bg-[#52B49C] animate-pulse"></span>
+                <span>Auto-Updating Directory</span>
+              </div>
+              <h1 class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">Website Sitemap</h1>
+              <p class="text-xs sm:text-sm text-gray-500 mt-1">Explore all active landing pages, contact advisory desks, and regulatory compliance notices.</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span id="pageCountBadge" class="bg-black text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider">
+                Loading Pages...
+              </span>
+              <a href="sitemap.xml" target="_blank" class="bg-[#52B49C] hover:bg-[#439c87] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider transition-colors shadow-sm">
+                XML Sitemap
+              </a>
+            </div>
+          </div>
+
+          <!-- Dynamic Live Filter Input -->
+          <div class="relative max-w-md">
+            <input type="text" id="sitemapSearchInput" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-xs sm:text-sm text-black focus:outline-none focus:border-[#52B49C] focus:bg-white placeholder-gray-400" placeholder="Search pages or services...">
+            <svg class="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+        </div>
+
+        <!-- Sitemap Categories Grid -->
+        <div id="sitemapContainer" class="space-y-8">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-[#162825] text-white py-10 border-t border-white/10 text-xs">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/60">
+        <div>Copyright © 2026 CertificationsBay. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="index.html" class="hover:text-white">Home</a>
+          <a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+          <a href="terms-and-conditions.html" class="hover:text-white">Terms & Conditions</a>
+          <a href="disclaimer.html" class="hover:text-white">Disclaimer</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Sitemap Auto-Update Script & Site Registry -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Auto-Updating Site Directory Registry
+      const SITE_PAGES = [
+        {
+          category: "🌟 Primary Service Landing Pages",
+          pages: [
+            { title: "EPR Registration & Compliance in India (Homepage)", url: "index.html", desc: "Plastic Packaging, E-Waste, Battery, Waste Tyre, and Used Oil EPR advisory.", badge: "Main Homepage" },
+            { title: "EPR Registration Advisory Desk", url: "epr-registration.html", desc: "Dedicated Extended Producer Responsibility compliance portal.", badge: "Service Page" },
+            { title: "Company Registration in India", url: "company-registration.html", desc: "Private Limited, OPC, LLP, and Section 8 MCA incorporation.", badge: "Service Page" },
+            { title: "LMPC Registration & Legal Metrology", url: "lmpc-registration.html", desc: "Rule 27 Legal Metrology (Packaged Commodities) importer registration.", badge: "Service Page" }
+          ]
+        },
+        {
+          category: "📩 Dedicated Contact & Advisory Desks",
+          pages: [
+            { title: "EPR Contact Advisory Desk", url: "epr-contact.html", desc: "Dedicated consultation form for EPR obligations.", badge: "Contact Desk" },
+            { title: "Company Registration Contact Advisory", url: "company-contact.html", desc: "Dedicated consultation form for business incorporation.", badge: "Contact Desk" },
+            { title: "LMPC Contact Advisory Desk", url: "lmpc-contact.html", desc: "Dedicated consultation form for Legal Metrology inquiries.", badge: "Contact Desk" },
+            { title: "General Consultation Advisory Desk", url: "contact.html", desc: "General cross-border business consultation.", badge: "General Contact" }
+          ]
+        },
+        {
+          category: "⚖️ Legal & Governance Notices",
+          pages: [
+            { title: "Privacy Policy", url: "privacy-policy.html", desc: "Data protection and privacy guidelines for CertificationsBay.", badge: "Legal Notice" },
+            { title: "Terms & Conditions", url: "terms-and-conditions.html", desc: "Terms of service and engagement agreements.", badge: "Legal Notice" },
+            { title: "Legal Disclaimer", url: "disclaimer.html", desc: "Independent private consultancy status and Google Ads compliance disclosures.", badge: "Legal Notice" },
+            { title: "Sitemap Directory", url: "sitemap.html", desc: "Full index of all active website pages and resources.", badge: "System Page" }
+          ]
+        }
+      ];
+
+      const sitemapContainer = document.getElementById('sitemapContainer');
+      const pageCountBadge = document.getElementById('pageCountBadge');
+      const searchInput = document.getElementById('sitemapSearchInput');
+
+      function renderSitemap(query = '') {
+        const cleanQuery = query.toLowerCase().trim();
+        let totalCount = 0;
+        let html = '';
+
+        SITE_PAGES.forEach(cat => {
+          const filteredPages = cat.pages.filter(p => 
+            p.title.toLowerCase().includes(cleanQuery) || 
+            p.desc.toLowerCase().includes(cleanQuery) || 
+            p.url.toLowerCase().includes(cleanQuery)
+          );
+
+          if (filteredPages.length > 0) {
+            totalCount += filteredPages.length;
+            html += `
+              <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-black border-b border-gray-100 pb-3 flex items-center justify-between">
+                  <span>${cat.category}</span>
+                  <span class="text-xs font-semibold text-[#52B49C] bg-[#EAF5EF] px-3 py-1 rounded-full">${filteredPages.length} Pages</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  ${filteredPages.map(page => `
+                    <a href="${page.url}" class="p-4 bg-[#FAFDFA] hover:bg-[#EAF5EF] border border-gray-200 hover:border-[#52B49C] rounded-2xl transition-all group flex flex-col justify-between space-y-2">
+                      <div class="flex items-start justify-between gap-2">
+                        <span class="text-sm font-bold text-black group-hover:text-[#52B49C] transition-colors">${page.title}</span>
+                        <span class="text-[10px] font-bold text-gray-500 group-hover:text-[#52B49C] uppercase tracking-wider shrink-0 bg-white px-2 py-0.5 rounded-full border border-gray-200">${page.badge}</span>
+                      </div>
+                      <p class="text-xs text-gray-500 leading-relaxed">${page.desc}</p>
+                      <div class="text-[11px] font-mono text-[#52B49C] font-semibold flex items-center gap-1 pt-1">
+                        <span>/${page.url}</span>
+                        <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </div>
+                    </a>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        });
+
+        if (totalCount === 0) {
+          html = `
+            <div class="bg-white p-12 rounded-3xl border border-gray-200 text-center space-y-3">
+              <div class="text-2xl">🔍</div>
+              <div class="text-base font-bold text-black">No pages match your search</div>
+              <p class="text-xs text-gray-500">Try searching for keywords like "EPR", "Company", "LMPC", or "Contact".</p>
+            </div>
+          `;
+        }
+
+        sitemapContainer.innerHTML = html;
+        pageCountBadge.innerText = `● ${totalCount} Active Pages`;
+      }
+
+      renderSitemap();
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          renderSitemap(e.target.value);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
