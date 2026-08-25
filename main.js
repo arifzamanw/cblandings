@@ -35,9 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       e.preventDefault();
       const targetEntity = btn.getAttribute('data-entity') || 'General Quote';
-      const isEPRPage = window.location.pathname.includes('epr-registration') || targetEntity.toLowerCase().includes('epr') || targetEntity.toLowerCase().includes('waste') || targetEntity.toLowerCase().includes('plastic') || targetEntity.toLowerCase().includes('battery') || targetEntity.toLowerCase().includes('tyre') || targetEntity.toLowerCase().includes('oil');
+      const isLMPCPage = window.location.pathname.includes('lmpc') || targetEntity.toLowerCase().includes('lmpc') || targetEntity.toLowerCase().includes('metrology') || targetEntity.toLowerCase().includes('packaged');
+      const isEPRPage = window.location.pathname.includes('epr') || targetEntity.toLowerCase().includes('epr') || targetEntity.toLowerCase().includes('waste') || targetEntity.toLowerCase().includes('plastic') || targetEntity.toLowerCase().includes('battery') || targetEntity.toLowerCase().includes('tyre') || targetEntity.toLowerCase().includes('oil');
       
-      let targetPage = isEPRPage ? 'epr-contact.html' : 'contact.html';
+      let targetPage = 'contact.html';
+      if (isLMPCPage) {
+        targetPage = 'lmpc-contact.html';
+      } else if (isEPRPage) {
+        targetPage = 'epr-contact.html';
+      }
+
       let serviceParam = '';
       if (targetEntity.includes('Liaison')) {
         serviceParam = '?service=Liaison+Office';
@@ -55,6 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceParam = '?service=Waste+Tyre';
       } else if (targetEntity.includes('Oil')) {
         serviceParam = '?service=Used+Oil';
+      } else if (targetEntity.includes('Importer')) {
+        serviceParam = '?service=Importer';
+      } else if (targetEntity.includes('Manufacturer')) {
+        serviceParam = '?service=Manufacturer';
+      } else if (targetEntity.includes('Packer')) {
+        serviceParam = '?service=Packer';
       }
 
       window.location.href = targetPage + serviceParam;
@@ -252,14 +265,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const eprCategoryEl = document.getElementById('heroEntityType') || document.getElementById('eprCategory');
       const eprProductEl = document.getElementById('heroProductActivity') || document.getElementById('eprProductActivity');
+      const heroIsImportingEl = document.getElementById('heroIsImporting');
+
+      let messageVal = eprProductEl ? eprProductEl.value.trim() : '';
+      if (heroIsImportingEl) {
+        messageVal = `Importing to India: ${heroIsImportingEl.value}${messageVal ? ' | Product: ' + messageVal : ''}`;
+      }
 
       const payload = {
         fullName: (document.getElementById('heroFullName') || document.getElementById('eprFullName')).value.trim(),
         email: (document.getElementById('heroEmail') || document.getElementById('eprEmail')).value.trim(),
         countryCode: (document.getElementById('heroCountryCode') || document.getElementById('eprCountryCode')) ? (document.getElementById('heroCountryCode') || document.getElementById('eprCountryCode')).value : '+91',
         phone: (document.getElementById('heroPhone') || document.getElementById('eprPhone')).value.trim(),
-        entityType: eprCategoryEl ? eprCategoryEl.value : 'EPR Consultation',
-        message: eprProductEl ? eprProductEl.value.trim() : '',
+        entityType: eprCategoryEl ? eprCategoryEl.value : 'Consultation',
+        message: messageVal,
         source: 'Hero Contact Form'
       };
 
@@ -276,6 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const productEl = document.getElementById('productActivity') || document.getElementById('eprProductActivity');
       const companyEl = document.getElementById('company');
+      const isImportingEl = document.getElementById('isImporting');
+
+      let messageVal = productEl ? productEl.value.trim() : '';
+      if (isImportingEl) {
+        messageVal = `Importing to India: ${isImportingEl.value}${messageVal ? ' | Details: ' + messageVal : ''}`;
+      }
 
       const payload = {
         fullName: document.getElementById('fullName').value.trim(),
@@ -284,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: document.getElementById('phone').value.trim(),
         company: companyEl ? companyEl.value.trim() : '',
         entityType: entityTypeSelect ? entityTypeSelect.value : 'General Consultation',
-        message: productEl ? productEl.value.trim() : '',
+        message: messageVal,
         source: 'Main Consultation Form'
       };
 
