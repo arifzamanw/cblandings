@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Fintech Ultra-Modern Design System - CertificationsBay Landing Page
+   Clean, Premium Palette (Flat No-Shadow & Flat No-Outline Design System)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    font-family: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-color: #FFFFFF;
+    color: #000000;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Global Zero Shadow & Zero Outline System Override */
+*, *::before, *::after {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+button, input, select, textarea, a, div {
+  box-shadow: none !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hero Infinite Brand Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Backers Infinite Marquee Animation */
+@keyframes backers-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.backers-track {
+  display: flex;
+  width: max-content;
+  animation: backers-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.backers-track:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Modal Overlay Animation */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  max-width: 32rem;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.25s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-backdrop.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Reference Layout Specific Helper Classes */
+.ref-hero-overlay {
+  background: linear-gradient(135deg, rgba(22, 40, 37, 0.88) 0%, rgba(22, 40, 37, 0.72) 50%, rgba(0, 0, 0, 0.60) 100%);
+}
+
+.ref-[#52B49C] {
+  color: #52B49C;
+}
+
+.bg-mint-badge {
+  background-color: rgba(82, 180, 156, 0.12);
+  color: #2b6659;
+  border: 1px solid rgba(82, 180, 156, 0.25);
+}
+
+/* Package Card Highlight Glow & Hover */
+.package-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.package-card:hover {
+  transform: translateY(-4px);
+  border-color: #52B49C;
+}
+
+.package-card-featured {
+  border: 2px solid #52B49C;
+  background-color: #FAFDFA;
+}
+
+/* Video Play Button Pulse Animation */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.play-pulse {
+  animation: pulse-ring 2.5s infinite ease-in-out;
+}
+
